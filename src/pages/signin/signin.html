@@ -1,0 +1,56 @@
+<!-- <ion-header>
+
+  <ion-navbar>
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+
+</ion-header> -->
+
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      Date de alta de CompraMe
+    </ion-card-header>
+    <ion-card-content>
+      <div>Introduce tus datos para darte de alta en CompraMe y así podrás encargar tus compras a tu tienda favorita en un instante.
+        Debes entrar todos los datos para poder darte de alta.</div>
+      <div>&nbsp;</div>
+      <div>Te enviaremos un SMS para verificar tus datos y activar tu cuenta</div>
+      <form (ngSubmit)="signin()">
+        <ion-item>
+          <ion-label floating>Nombre</ion-label>
+          <ion-input type="text" [(ngModel)]="first_name" name="first_name" required>Nombre</ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Apellidos</ion-label>
+          <ion-input type="text" [(ngModel)]="last_name" name="last_name" required>Apellidos</ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Nombre de usuario para entrar</ion-label>
+          <ion-input type="text" [(ngModel)]="username" name="username" (blur)="checkUsername()" required>Username</ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Contraseña (mínimo 5 caracteres)</ion-label>
+          <ion-input type="password" [(ngModel)]="password" name="password" required>Password</ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Correo electrónico</ion-label>
+          <ion-input type="email" [(ngModel)]="email" name="email" required>Correo electrónico</ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Teléfono móvil</ion-label>
+          <ion-input type="phone" [(ngModel)]="mobile" name="mobile" required>Teléfono móvil</ion-input>
+        </ion-item>
+        <div padding>
+          <button ion-button full type="submit">Darte de alta</button>
+        </div>
+      </form>
+      <ion-row>
+        <ion-col>
+          <button ion-button clear small color="danger" (click)="login()">Vuelve a la entrada</button>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
