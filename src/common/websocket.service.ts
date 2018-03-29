@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core'
 import * as io from 'socket.io-client'
 import { Observable } from 'rxjs/Observable'
 import { Subject } from 'rxjs/Subject'
+import { ENV } from '@app/env'
 // import * as Rx from 'rxjs/Rx'
 
 @Injectable()
@@ -14,7 +15,9 @@ export class WebsocketService {
   connect(): Subject<MessageEvent> {
     // If you aren't familiar with environment variables then
     // you can hard code `environment.ws_url` as `http://localhost:5000`
-    this.socket = io('ws://localhost:8080')
+    console.log('ENV', ENV)
+
+    this.socket = io(`ws://${ENV.ws_url}`)
 
     // We define our observable which will observe any incoming messages
     // from our socket.io server.

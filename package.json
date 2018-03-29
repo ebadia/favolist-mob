@@ -5,12 +5,17 @@
   "homepage": "http://ionicframework.com/",
   "private": true,
   "scripts": {
-    "clean": "ionic clean",
-    "build": "ionic build",
-    "lint": "ionic lint",
-    "ionic:build": "ionic build",
-    "ionic:serve": "ionic serve",
-    "ionic:local": "ionic --proxy-config proxy.conf.json"
+    "clean": "ionic-app-scripts clean",
+    "build": "ionic-app-scripts build",
+    "lint": "ionic-app-scripts lint",
+    "ionic:build": "ionic-app-scripts build",
+    "ionic:serve": "ionic-app-scripts serve",
+    "ionic:local": "ionic-app-scripts serve --proxy-config proxy.conf.json",
+    "ionic:aws":
+      "IONIC_ENV=prod ionic-app-scripts build ios --prod --proxy-config proxy.conf.json"
+  },
+  "config": {
+    "ionic_webpack": "./config/webpack.config.js"
   },
   "dependencies": {
     "@angular/common": "5.0.3",
@@ -55,8 +60,6 @@
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-ionic-keyboard": {}
     },
-    "platforms": [
-      "ios"
-    ]
+    "platforms": ["ios"]
   }
 }
