@@ -1,10 +1,11 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs/Observable'
+import { config } from '../config'
 
 @Injectable()
 export class AccountsProvider {
-  apiUrl = '/api/v1'
+  apiUrl = config.API_URL
 
   constructor(private http$: HttpClient) {
     console.log('Hello UsersProvider Provider')

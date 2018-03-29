@@ -4,10 +4,11 @@ import { Observable } from 'rxjs/Observable'
 import { WebsocketService } from '../../common/websocket.service'
 import { Subject } from 'rxjs/Subject'
 import 'rxjs/add/operator/map'
+import { config } from '../config'
 
 @Injectable()
 export class OrdersProvider {
-  apiUrl = '/api/v1'
+  apiUrl = config.API_URL
   messages: Subject<any>
 
   constructor(private http$: HttpClient, private wsService: WebsocketService) {
