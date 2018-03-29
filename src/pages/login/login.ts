@@ -46,7 +46,7 @@ export class LoginPage {
       error => {
         let msg = this.toastCtrl.create({
           message:
-            'No hemos podido verificar los datos de usuario. Comprueba que los datos que has introducido sean los correctos y vuelve a intentarlo.',
+            'No hemos podido verificar los datos de usuario. Comprueba que los datos que has introducido sean los correctos y vuelve a intentarlo. ' + error,
           duration: 3000,
           position: 'bottom'
         })
