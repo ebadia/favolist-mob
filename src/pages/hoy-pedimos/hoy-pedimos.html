@@ -24,18 +24,14 @@
 
     <ion-card-content>
       <div class="order-time">{{order.hour}}</div>
-      <ion-icon name="battery-dead" *ngIf="order.status === 'ORDERING'"></ion-icon>
-      <ion-icon name="battery-charging" *ngIf="order.status === 'OPENED'"></ion-icon>
-      <ion-icon name="battery-full" *ngIf="order.status === 'READY'" color="secondary"></ion-icon>
+      <ion-icon name="battery-dead" *ngIf="order.status === 'ORDERING'"> LLEGO EL PEDIDO </ion-icon>
+      <ion-icon name="battery-charging" *ngIf="order.status === 'OPENED'"> LO ESTAMOS PREPARANDO </ion-icon>
+      <ion-icon name="battery-full" *ngIf="order.status === 'READY'" color="secondary"> YA PUEDES RECOGERME </ion-icon>
+      <div *ngIf="order.status === 'CLOSED'" color="secondary"> RECOGIDO </div>
 
       <ion-row no-padding align-items-center *ngFor="let product of order.items">
         <ion-col col-1>
-          <!-- <span *ngIf="product.orderStatus==='OPENED'">
-            <ion-icon name="checkmark-circle" color="default"></ion-icon>
-          </span>
-          <span *ngIf="product.orderStatus==='READY'">
-            <ion-icon name="checkmark-circle" color="secondary"></ion-icon>
-          </span> -->
+          &nbsp;
         </ion-col>
         <ion-col col-1>
           <span *ngIf="product.status==='READY'">
