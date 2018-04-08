@@ -10,14 +10,11 @@
 <ion-content padding>
   <ion-card>
     <img src="assets/imgs/ppb.jpg" class="center"/>
-    <ion-card-header>
-      Entra a Comprar
-    </ion-card-header>
     <ion-card-content>
       <ion-list>
         <ion-item>
           <ion-label floating>Username</ion-label>
-          <ion-input type="text" [(ngModel)]="username">Username</ion-input>
+          <ion-input [(ngModel)]="username" autocapitalize="none">Username</ion-input>
         </ion-item>
         <ion-item>
           <ion-label floating>Password</ion-label>
