@@ -1,0 +1,30 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-title>Mis tiendas</ion-title>
+    <!-- <ion-buttons end>
+      <button ion-button (click)="logout()">Logout</button>
+    </ion-buttons> -->
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div *ngIf="hasShops">
+    <ion-list *ngIf="shops && shops.length > 0">
+      <button ion-item *ngFor="let shop of shops" (click)="shopSelected(shop)">
+        {{ shop.name }}
+      </button>
+    </ion-list>
+  </div>
+  <div *ngIf="!hasShops">
+    <button ion-button clear full color="danger" (click)="addShops()">
+      Añade tu primera tienda preferida...
+    </button>
+  </div>
+</ion-content>

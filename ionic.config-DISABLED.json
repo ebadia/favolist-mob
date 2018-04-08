@@ -1,0 +1,14 @@
+{
+  "name": "favolist",
+  "app_id": "54409328",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  },
+  "proxies": [
+    {
+      "path": "/api/v1",
+      "proxyUrl": "http://localhost:8080/api/v1"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title *ngIf="currentShop">{{currentShop.name}}</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="gobasket()">
+        <ion-icon name="cart"></ion-icon>&nbsp;
+        <ion-badge>{{inBasket}}</ion-badge>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-label *ngIf="products && products.length === 0">No has hecho ningun pedido.</ion-label>
+  <ion-label *ngIf="products && products.length > 0">
+    <h1>Hoy has pedido...</h1>
+  </ion-label>
+
+  <ion-card *ngFor="let order of orders">
+
+    <ion-card-content>
+      <div class="order-time">{{order.hour}}</div>
+      <ion-icon name="battery-dead" *ngIf="order.status === 'ORDERING'"> LLEGO EL PEDIDO </ion-icon>
+      <ion-icon name="battery-charging" *ngIf="order.status === 'OPENED'"> LO ESTAMOS PREPARANDO </ion-icon>
+      <ion-icon name="battery-full" *ngIf="order.status === 'READY'" color="secondary"> YA PUEDES RECOGERME </ion-icon>
+      <div *ngIf="order.status === 'CLOSED'" color="secondary"> RECOGIDO </div>
+
+      <ion-row no-padding align-items-center *ngFor="let product of order.items">
+        <ion-col col-1>
+          &nbsp;
+        </ion-col>
+        <ion-col col-1>
+          <span *ngIf="product.status==='READY'">
+            <ion-icon name="checkmark-circle" color="secondary"></ion-icon>
+          </span>
+          <span *ngIf="product.status==='PENDING'">
+            <ion-icon name="code-working" color="danger"></ion-icon>
+          </span>
+        </ion-col>
+        <ion-col>
+          <span>{{product.product.name}}</span>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
