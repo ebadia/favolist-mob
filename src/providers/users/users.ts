@@ -15,4 +15,15 @@ export class UsersProvider {
     const res = this.http$.get(this.apiUrl + `/users/${userId}/shops`)
     return res
   }
+
+  addUserToShop(userId: number, obj: any): Observable<any> {
+    return this.http$.post(`${this.apiUrl}/users/${userId}/shops`, obj)
+  }
+
+  delete(id: number): Observable<any> {
+    return this.http$.delete(`${this.apiUrl}/users/${id}`)
+  }
+
+
+
 }

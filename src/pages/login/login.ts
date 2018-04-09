@@ -25,6 +25,9 @@ export class LoginPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage')
+    this.storage$.get('current-user').then( user => {
+      console.log('KEEPED', user)
+    })
   }
 
   login() {
