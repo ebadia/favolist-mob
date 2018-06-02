@@ -40,4 +40,10 @@ export class OrdersProvider {
       this.apiUrl + `/orders/today/users/${userId}/shops/${shopId}`
     )
   }
+
+  orderedOnDay(userId: string, shopId: number, day: string): Observable<any> {
+    return this.http$.get(
+      this.apiUrl + `/orders/users/${userId}/shops/${shopId}/day/${day}`
+    )
+  }
 }

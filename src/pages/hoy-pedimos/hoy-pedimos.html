@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar class="force-back-button">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -15,9 +15,11 @@
 
 <ion-content padding>
 
+  <button ion-button (click)="goBack()">Volver</button>
+
   <ion-label *ngIf="products && products.length === 0">No has hecho ningun pedido.</ion-label>
   <ion-label *ngIf="products && products.length > 0">
-    <h1>Hoy has pedido...</h1>
+    <h3>{{fecha.nombre}}, {{fecha.dia}}/{{fecha.mes}} </h3>
   </ion-label>
 
   <ion-card *ngFor="let order of orders">
@@ -42,6 +44,7 @@
           </span>
         </ion-col>
         <ion-col>
+          <span style="font-weight: 900">{{product.quantity}} </span>
           <span>{{product.product.name}}</span>
         </ion-col>
       </ion-row>

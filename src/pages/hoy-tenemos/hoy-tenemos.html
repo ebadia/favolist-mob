@@ -10,8 +10,11 @@
   </ion-navbar>
 </ion-header>
 
+<button ion-button (click)="goBack()">Volver</button>
+
 
 <ion-label *ngIf="today && today.length === 0">No hay productos disponibles.</ion-label>
+
 <ion-label *ngIf="today && today.length > 0">
   <h1>Hoy tenemos...</h1>
 </ion-label>

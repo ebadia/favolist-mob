@@ -71,8 +71,9 @@ export class BasketPage {
 
   confirmOrder() {
     this.getData().then(res => {
+      // day: moment().format('YYYY-MM-DD'),
       let order = {
-        day: moment().format('YYYY-MM-DD'),
+        day: res[2].fecha,
         hour: moment().format('HH:mm'),
         status: 'ORDERING',
         user: res[0].id,
@@ -93,14 +94,15 @@ export class BasketPage {
   getData() {
     const user = this.storage$.get('current-user')
     const shop = this.storage$.get('current-shop')
-    return Promise.all([user, shop]).then(values => values)
+    const fecha = this.storage$.get('current-fecha')
+    return Promise.all([user, shop, fecha]).then(values => values)
   }
 
   saveItems(orderId: number, items: any[]) {
     for (let i = 0; i < items.length; i++) {
       this.order$
         .addItem(orderId, {
-          quantity: 1,
+          quantity: items[i].quantity,
           product: { id: items[i].productId }
         })
         .subscribe(res => console.log('Product added'))
@@ -112,7 +114,8 @@ export class BasketPage {
     this.storage$.get('current-shop').then(shop => {
       this.storage$.set(shop.id, null).then(products => {
         this.products = products
-        this.navCtrl.pop()
+        // this.navCtrl.pop()
+        this.navCtrl.parent.viewCtrl.dismiss()
       })
     })
   }

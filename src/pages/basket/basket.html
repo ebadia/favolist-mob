@@ -24,8 +24,9 @@
     <!-- <ion-card-content> -->
     <ion-item-sliding *ngFor="let product of products; let i = index">
       <ion-item>
+        <span style="font-weight: 900">{{product.quantity}}</span>
         <span>{{product.name}}</span>
-        <span item-end>{{product.price}}€</span>
+        <span item-end>{{product.price*product.quantity}}€</span>
       </ion-item>
       <ion-item-options side="right">
         <button ion-button color="danger" (click)="deleteProduct(i)">

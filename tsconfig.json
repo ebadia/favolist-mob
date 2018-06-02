@@ -12,7 +12,7 @@
     "baseUrl": "./src",
     "paths": {
       "@app/env": ["environments/environment"],
-      "@app/common": ["common"]
+      "@common": ["common"]
     }
   },
   "include": ["src/**/*.ts"],

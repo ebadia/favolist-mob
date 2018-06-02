@@ -1,8 +1,9 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core'
-import { IonicPage, NavController, NavParams } from 'ionic-angular'
+import { Component } from '@angular/core'
+import { IonicPage, NavController } from 'ionic-angular'
 import { Storage } from '@ionic/storage'
 import { OrdersProvider } from '../../providers/orders/orders'
 import { ToastController } from 'ionic-angular'
+import { Fecha } from '../../common/interfaces/fecha'
 
 @IonicPage()
 @Component({
@@ -18,6 +19,8 @@ export class HoyPedimosComponent {
   basket: any[]
   inBasket: number
   currentShop: any
+
+  fecha: Fecha
 
   constructor(
     private storage$: Storage,
@@ -50,23 +53,30 @@ export class HoyPedimosComponent {
   private getOrderedToday() {
     this.storage$.get('current-shop').then(currentshop => {
       this.storage$.get('current-user').then(currentuser => {
-        this.order$
-          .orderedToday(currentuser.id, currentshop.id)
-          .subscribe(res => {
-            this.orders = res
-            this.products = []
-            res.forEach(order => {
-              order.items.forEach(item => {
-                item['orderStatus'] = order.status
-                this.products.push(item)
+        this.storage$.get('current-fecha').then(fecha => {
+          this.fecha = fecha
+          this.order$
+            .orderedOnDay(currentuser.id, currentshop.id, fecha.fecha)
+            .subscribe(res => {
+              this.orders = res
+              this.products = []
+              res.forEach(order => {
+                order.items.forEach(item => {
+                  item['orderStatus'] = order.status
+                  this.products.push(item)
+                })
               })
             })
-          })
+        })
       })
     })
   }
 
   gobasket() {
     this.navCtrl.push('BasketPage', this.currentShop)
+  }
+
+  goBack() {
+    this.navCtrl.parent.viewCtrl.dismiss()
   }
 }

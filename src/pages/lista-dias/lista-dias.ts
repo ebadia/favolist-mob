@@ -29,11 +29,11 @@ export class ListaDiasPage {
     private storage$: Storage
   ) {
     moment.locale('es')
-    this.hoy = this.setDia(moment())
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ListaDiasPage')
+    this.hoy = this.setDia(moment())
     this.setSemana(this.hoy)
     this.diaEscogido = moment().toISOString()
   }
