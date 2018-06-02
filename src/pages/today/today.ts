@@ -7,6 +7,7 @@ import { ToastController } from 'ionic-angular'
 
 import { DisponiblePage } from '../disponible/disponible'
 import { HoyPedimosComponent } from '../hoy-pedimos/hoy-pedimos'
+import { Fecha } from './../../common/interfaces/fecha'
 
 @IonicPage()
 @Component({
@@ -15,7 +16,7 @@ import { HoyPedimosComponent } from '../hoy-pedimos/hoy-pedimos'
 })
 export class TodayPage {
   // Reference to the app's root nav
-
+  fecha: Fecha
   today: any[]
   products: any[]
   currentShop: any
@@ -39,6 +40,10 @@ export class TodayPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TodayPage')
+    this.storage$.get('current-fecha').then(fecha => {
+      this.fecha = fecha
+      console.log('FECHA', this.fecha)
+    })
   }
 
   onUpdateBasket(event) {

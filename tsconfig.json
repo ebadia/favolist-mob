@@ -11,7 +11,8 @@
     "target": "es6",
     "baseUrl": "./src",
     "paths": {
-      "@app/env": ["environments/environment"]
+      "@app/env": ["environments/environment"],
+      "@app/common": ["common"]
     }
   },
   "include": ["src/**/*.ts"],

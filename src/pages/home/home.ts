@@ -57,7 +57,8 @@ export class HomePage {
 
   shopSelected(shop) {
     this.storage$.set('current-shop', shop).then(shop => {
-      this.navCtrl.push('TodayPage')
+      // this.navCtrl.push('TodayPage')
+      this.navCtrl.push('ListaDiasPage')
       // this.app$.getRootNavs()[0].setRoot('TodayPage')
       // this.nav.setRoot('TodayPage')
     })
