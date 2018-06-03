@@ -77,7 +77,7 @@ export class DisponiblePage {
         product.quantity = 1
         this.basket.push(product)
       }
-      product.stock = product.stock - 1
+      product.availableStockOut = product.availableStockOut - 1
       this.storage$
         // .set(product.shopId, Object.assign(basket, product))
         .set(product.shopId.toString(), this.basket)

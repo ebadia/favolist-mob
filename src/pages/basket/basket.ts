@@ -4,6 +4,7 @@ import { AlertController } from 'ionic-angular'
 import { Storage } from '@ionic/storage'
 import * as moment from 'moment'
 import { OrdersProvider } from '../../providers/orders/orders'
+import { AvailablesProvider } from 'providers/availables/availables'
 
 @IonicPage()
 @Component({
@@ -18,6 +19,7 @@ export class BasketPage {
     private navCtrl: NavController,
     private alertCtrl: AlertController,
     private storage$: Storage,
+    private available$: AvailablesProvider,
     private order$: OrdersProvider
   ) {}
 
@@ -105,7 +107,14 @@ export class BasketPage {
           quantity: items[i].quantity,
           product: { id: items[i].productId }
         })
-        .subscribe(res => console.log('Product added'))
+        .subscribe(res => {
+          // update stock
+          const obj = {
+            availableStock: items[i].availableStock - items[i].quantity,
+            availableStockOut: items[i].availableStockOut - items[i].quantity
+          }
+          this.available$.update(items[i].availableId, obj)
+        })
     }
     this.vaciaCarro()
   }

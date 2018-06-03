@@ -16,6 +16,10 @@ export class AvailablesProvider {
     return this.http$.get(this.apiUrl + this.endpoint + shopId)
   }
 
+  update(id: number, obj: any): Observable<any> {
+    return this.http$.patch( `${this.apiUrl}/availables/${id}` , obj )
+  }
+
   fromDay(shopId: number, day: string): Observable<any> {
     let params: HttpParams = new HttpParams()
     params = params.append('date', day)
