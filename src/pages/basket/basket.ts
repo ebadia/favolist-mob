@@ -105,17 +105,19 @@ export class BasketPage {
       this.order$
         .addItem(orderId, {
           quantity: items[i].quantity,
+          place: 'APP',
           product: { id: items[i].productId }
         })
-        .subscribe(res => {
-          // update stock
-          const obj = {
-            stock: items[i].availableStock - items[i].quantity,
-            stockOut: items[i].availableStockOut - items[i].quantity
-          }
-          this.available$
-            .update(items[i].availableId, obj)
-            .subscribe(() => console.log('Stock Updated'))
+        .subscribe(() => {
+          console.log('Item Updated')
+          // // update stock
+          // const obj = {
+          //   stock: items[i].availableStock - items[i].quantity,
+          //   stockOut: items[i].availableStockOut - items[i].quantity
+          // }
+          // this.available$
+          //   .update(items[i].availableId, obj)
+          //   .subscribe(() => console.log('Stock Updated'))
         })
     }
     this.vaciaCarro()

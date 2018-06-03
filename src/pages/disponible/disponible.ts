@@ -54,11 +54,11 @@ export class DisponiblePage {
   private getAvailablesToday(currentshop: any, day: string) {
     this.avail$.fromDay(currentshop.id, day).subscribe(
       today => {
-        // this.today = today.map(product => {
-        //   product.quantity = 0
-        //   return product
-        // })
-        this.today = today
+        this.today = today.map(product => {
+          product.stockReal = product.availableStockOut - product.ventaapp
+          return product
+        })
+        // this.today = today
       },
       error => {
         console.log('today products error', error)
@@ -77,7 +77,7 @@ export class DisponiblePage {
         product.quantity = 1
         this.basket.push(product)
       }
-      product.availableStockOut = product.availableStockOut - 1
+      product.stockReal = product.stockReal - 1
       this.storage$
         // .set(product.shopId, Object.assign(basket, product))
         .set(product.shopId.toString(), this.basket)
