@@ -33,9 +33,7 @@ export class ListaDiasPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ListaDiasPage')
-    this.hoy = this.setDia(moment())
-    this.setSemana(this.hoy)
-    this.diaEscogido = moment().toISOString()
+    this.setHoy()
   }
 
   setDia(cual: any) {
@@ -65,5 +63,11 @@ export class ListaDiasPage {
     this.storage$.set('current-fecha', dia).then(() => {
       this.navCtrl.push('TodayPage')
     })
+  }
+
+  setHoy() {
+    this.hoy = this.setDia(moment())
+    this.setSemana(this.hoy)
+    this.diaEscogido = moment().toISOString()
   }
 }

@@ -20,6 +20,11 @@
     <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD MMMM YYYY" [(ngModel)]="diaEscogido" (ionChange)="cambiaDia()"></ion-datetime>
   </ion-item>
 
+  <ion-fab bottom right>
+    <button ion-fab (click)="setHoy()" color="danger">Hoy</button>
+  </ion-fab>
+
+
   <button *ngFor="let dia of semana" ion-button full large (click)="muestraDia(dia)">
     <div class="petit">{{dia.nombre}}</div>
     <div class="gran">{{dia.dia}}

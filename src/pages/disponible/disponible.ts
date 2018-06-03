@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular'
 import { Storage } from '@ionic/storage'
 import { AvailablesProvider } from './../../providers/availables/availables'
 import * as _ from 'lodash'
+import * as moment from 'moment'
 
 /**
  * Generated class for the DisponiblePage page.
@@ -27,6 +28,7 @@ export class DisponiblePage {
   inBasket: number
   currentShop: any
   fecha: Fecha
+  isAntesHoy: boolean
 
   constructor(
     private storage$: Storage,
@@ -42,6 +44,8 @@ export class DisponiblePage {
       this.storage$.get(currentshop.id.toString()).then(shop => {
         this.storage$.get('current-fecha').then(fecha => {
           this.fecha = fecha
+          this.isAntesHoy = moment(fecha.fecha).isBefore(moment())
+
           console.log('TodayPage WILL gets shop cart', shop)
           this.inBasket = shop ? shop.length : 0
           this.currentShop = currentshop
