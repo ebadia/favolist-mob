@@ -44,7 +44,7 @@ export class DisponiblePage {
       this.storage$.get(currentshop.id.toString()).then(shop => {
         this.storage$.get('current-fecha').then(fecha => {
           this.fecha = fecha
-          this.isAntesHoy = moment(fecha.fecha).isBefore(moment())
+          this.isAntesHoy = moment(fecha.fecha).isBefore(moment().format('YYYY-MM-DD'))
 
           console.log('TodayPage WILL gets shop cart', shop)
           this.inBasket = shop ? shop.length : 0
