@@ -1,5 +1,10 @@
 import { Component } from '@angular/core'
-import { IonicPage, NavController, NavParams } from 'ionic-angular'
+import {
+  IonicPage,
+  NavController,
+  NavParams,
+  ViewController
+} from 'ionic-angular'
 import { Storage } from '@ionic/storage'
 
 import { Fecha } from './../../common/interfaces/fecha'
@@ -25,10 +30,12 @@ export class ListaDiasPage {
 
   constructor(
     public navCtrl: NavController,
+    private viewCtrl: ViewController,
     public navParams: NavParams,
     private storage$: Storage
   ) {
     moment.locale('es')
+    this.viewCtrl.setBackButtonText('')
   }
 
   ionViewDidLoad() {
