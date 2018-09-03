@@ -17,7 +17,7 @@ export class WebsocketService {
     // you can hard code `environment.ws_url` as `http://localhost:5000`
     console.log('ENV', ENV)
 
-    this.socket = io(`ws://${ENV.ws_url}`)
+    this.socket = io(`wss://${ENV.ws_url}`)
 
     // We define our observable which will observe any incoming messages
     // from our socket.io server.
