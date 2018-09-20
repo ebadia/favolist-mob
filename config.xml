@@ -84,4 +84,12 @@
     <plugin name="cordova-sqlite-storage" spec="^2.2.0" />
     <engine name="ios" spec="~4.5.4" />
     <allow-navigation href="http://192.168.1.23:8100" />
+    <plugin name="cordova-plugin-ionic" spec="^5.2.4">
+        <variable name="APP_ID" value="54409328" />
+        <variable name="CHANNEL_NAME" value="Master" />
+        <variable name="UPDATE_METHOD" value="background" />
+        <variable name="UPDATE_API" value="https://api.ionicjs.com" />
+        <variable name="MAX_STORE" value="2" />
+        <variable name="MIN_BACKGROUND_DURATION" value="30" />
+    </plugin>
 </widget>
